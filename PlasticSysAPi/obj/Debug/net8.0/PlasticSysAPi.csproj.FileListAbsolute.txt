@@ -1,0 +1,8 @@
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.csproj.AssemblyReference.cache
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.AssemblyInfoInputs.cache
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.AssemblyInfo.cs
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.csproj.CoreCompileInputs.cache
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Stefanie\Source\Repos\PlasticSys2025\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.MvcApplicationPartsAssemblyInfo.cache
