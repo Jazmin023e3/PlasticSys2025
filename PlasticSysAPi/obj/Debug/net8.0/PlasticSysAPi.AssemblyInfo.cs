@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlasticSysAPi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b989f074aed60578a24cf686439589c2b827d465")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad1914b61681de9a478bbac698591758af5ac440")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlasticSysAPi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlasticSysAPi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
