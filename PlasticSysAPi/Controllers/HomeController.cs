@@ -1,12 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
-namespace PlasticSysAPi.Controllers
+namespace PlasticSysAPI.Controllers
 {
-    public class HomeController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class HomeController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
         {
-            return View();
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IActionResult GetStatus()
+        {
+            return Ok(new { status = "API is running", version = "1.0" });
+        }
+
+        [HttpGet("error")]
+        public IActionResult GetError()
+        {
+            var errorDetails = new
+            {
+                message = "An error occurred during the request.",
+                requestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return BadRequest(errorDetails); // Devuelve un código 400 con los detalles del error en JSON.
         }
     }
 }
