@@ -10,7 +10,7 @@ namespace PlasticSysAPI.DTOS
     [Authorize(Roles = "Operador")]
     public class MarcasApiController : ControllerBase
     {
-        private readonly PlasticSysAContext _context;
+        private readonly PlasticSysAPIContext _context;
 
         public PlasticSysContext Context => _context;
 
