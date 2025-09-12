@@ -7,6 +7,7 @@ namespace PlasticSysAPI.DTOS
     {
         [Required(ErrorMessage = "El nombre es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El nombre no puede exceder los 50 caracteres.")]
+        public int MarcaId { get; set; }
         public string Nombre { get; set; }
     }
 }

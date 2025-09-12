@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PlasticSysAPI.DTOS; // ¡Importante! Asegúrate de tener esta línea
-
+using PlasticSYS.Models;
 namespace PlasticSysAPI.DTOS
 {
     [Route("api/[controller]")]
@@ -20,27 +19,30 @@ namespace PlasticSysAPI.DTOS
 
         // GET: api/MarcasApi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MarcaDto>>> GetMarcas()
+        public async Task<ActionResult<IEnumerable<MarcaActualizarDto>>> GetMarcas(int id)
         {
             // Se usa el DTO para la respuesta.
             return await Context.Marcas
-                .Select(m => new MarcaDto { MarcaId = m.MarcaId, Nombre = m.Nombre })
+                .Select(m => new MarcaActualizarDto { MarcaId = m.MarcaId, Nombre = m.Nombre })
                 .ToListAsync();
         }
 
         // GET: api/MarcasApi/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] 
         public async Task<ActionResult<MarcaDto>> GetMarca(int id)
         {
-            var marca = await Context.Marcas.FindAsync(id);
+            var marca = await _context.Marcas.FindAsync(id);
 
             if (marca == null)
             {
                 return NotFound();
             }
 
-            // Se mapea la entidad a un DTO antes de devolverla.
-            var marcaDto = new MarcaDto { MarcaId = marca.MarcaId, Nombre = marca.Nombre };
+            var marcaDto = new MarcaDto
+            {
+                MarcaId = marca.MarcaId,
+                Nombre = marca.Nombre
+            };
 
             return marcaDto;
         }
