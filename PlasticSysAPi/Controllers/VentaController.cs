@@ -5,106 +5,53 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlasticSYS.Models;
+using PlasticSysAPi.DTOS;
+using PlasticSysAPi.Interfaces;
 
 namespace PlasticSYS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Operador")]
     public class VentasController : ControllerBase
     {
-        private readonly PlasticSysContext _context;
+        private readonly IVentaService _service;
 
-        public VentasController(PlasticSysContext context)
+        // 2.Inyeccion de dependencia del servicio
+        public VentasController(IVentaService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        // GET: api/Ventas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Venta>>> GetVentas(int registros)
+        public async Task<IActionResult> GetAll()
+           => Ok(await _service.GetAllAsync());
+
+        [HttpGet("{Id_venta:int}")]
+        public async Task<IActionResult> GetById(int Id_venta)
         {
-            var query = _context.Ventas.AsQueryable();
-            if (registros > 0)
-            {
-                query = query.Take(registros);
-            }
-            return await query.ToListAsync();
+            var item = await _service.GetByIdAsync(Id_venta);
+            return item is null ? NotFound() : Ok(item);
         }
 
-        // GET: api/Ventas/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Venta>> GetVenta(int id)
-        {
-            var venta = await _context.Ventas.FindAsync(id);
-
-            if (venta == null)
-            {
-                return NotFound();
-            }
-
-            return venta;
-        }
-
-        // POST: api/Ventas
         [HttpPost]
-        public async Task<ActionResult<Venta>> PostVenta(Venta venta)
+        public async Task<IActionResult> Create([FromBody] VentaCrearDTO dto)
         {
-            _context.Ventas.Add(venta);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetVenta", new { id = venta.VentaId }, venta);
+            var created = await _service.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { Id_venta = created.VentaId }, created);
         }
 
-        // PUT: api/Ventas/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutVenta(int id, Venta venta)
+        [HttpPut("{Id_venta}")]
+        public async Task<IActionResult> Update(int Id_venta, [FromBody] VentaActualizarDTO dto)
         {
-            if (id != venta.VentaId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(venta).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VentaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var ok = await _service.UpdateAsync(Id_venta, dto);
+            return ok ? NoContent() : NotFound();
         }
 
-        // DELETE: api/Ventas/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteVenta(int id)
+        [HttpDelete("{Id_venta:int}")]
+        public async Task<IActionResult> Delete(int Id_venta)
         {
-            var venta = await _context.Ventas.FindAsync(id);
-            if (venta == null)
-            {
-                return NotFound();
-            }
-
-            _context.Ventas.Remove(venta);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool VentaExists(int id)
-        {
-            return _context.Ventas.Any(e => e.VentaId == id);
+            var ok = await _service.DeleteAsync(Id_venta);
+            return ok ? NoContent() : NotFound();
         }
     }
 }

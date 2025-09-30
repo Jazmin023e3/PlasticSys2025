@@ -5,19 +5,8 @@ using System.Threading.Tasks;
 
 namespace PlasticSysAPI.Repositorios
 {
-    public class MarcaRepository : IMarcaRepository
+    public class MarcaRepository
     {
-        private readonly PlasticSysContext _context;
 
-        public MarcaRepository(PlasticSysContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<IEnumerable<Marca>> GetMarcasAsync()
-        {
-            return await _context.Marcas.ToListAsync();
-        }
-        // Agrega las implementaciones de los otros métodos de la interfaz
     }
 }
