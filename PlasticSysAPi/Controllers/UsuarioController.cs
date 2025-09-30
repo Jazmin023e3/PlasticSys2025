@@ -89,7 +89,7 @@ namespace PlasticSYS.Controllers
         public async Task<IActionResult> PutUsuario(long id, Usuario usuario)
         {
             // CORRECCIÓN: El parámetro 'id' debe ser del mismo tipo (long) que usuario.UsuarioId
-            if (id != usuario.UsuarioId)
+
             {
                 return BadRequest();
             }
@@ -116,6 +116,11 @@ namespace PlasticSYS.Controllers
             return NoContent();
         }
 
+        private bool UsuarioExists(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         // DELETE: api/Usuarios/5
         /// <summary>
         /// Elimina un usuario por su ID.
@@ -134,14 +139,11 @@ namespace PlasticSYS.Controllers
 
             return NoContent();
         }
+    }
+}
 
         /// <summary>
         /// Verifica si un usuario existe por ID.
         /// El ID se define como long para coincidir con el tipo de clave primaria.
         /// </summary>
-        private bool UsuarioExists(long id)
-        {
-            return _context.Usuarios.Any(e => e.UsuarioId == id);
-        }
-    }
-}
+        
