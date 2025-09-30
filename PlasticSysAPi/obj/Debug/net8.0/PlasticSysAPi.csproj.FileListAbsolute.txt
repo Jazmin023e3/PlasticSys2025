@@ -591,3 +591,11 @@ C:\Users\Stefanie\Videos\ProyectoAPI\PlasticSysAPi\obj\Debug\net8.0\refint\Plast
 C:\Users\Stefanie\Videos\ProyectoAPI\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.pdb
 C:\Users\Stefanie\Videos\ProyectoAPI\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.genruntimeconfig.cache
 C:\Users\Stefanie\Videos\ProyectoAPI\PlasticSysAPi\obj\Debug\net8.0\ref\PlasticSysAPi.dll
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.csproj.AssemblyReference.cache
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.AssemblyInfoInputs.cache
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.AssemblyInfo.cs
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.csproj.CoreCompileInputs.cache
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Jazmin\Downloads\Proyecto Original\PlasticSysAPi\obj\Debug\net8.0\PlasticSysAPi.sourcelink.json

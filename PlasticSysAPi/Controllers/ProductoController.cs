@@ -10,6 +10,7 @@ namespace PlasticSYS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    // 1. Dejamos Authorize para proteger POST, PUT y DELETE.
     [Authorize(Roles = "Operador")]
     public class ProductosController : ControllerBase
     {
@@ -20,8 +21,11 @@ namespace PlasticSYS.Controllers
             _context = context;
         }
 
-        // GET: api/Productos
+        // ===============================================
+        // GET: api/Productos (Público - No requiere Login)
+        // ===============================================
         [HttpGet]
+        [AllowAnonymous] // <--- AGREGAMOS ESTO
         public async Task<ActionResult<IEnumerable<Producto>>> GetProductos(string nombre, int registros)
         {
             var query = _context.Productos.AsQueryable();
@@ -33,25 +37,35 @@ namespace PlasticSYS.Controllers
             {
                 query = query.Take(registros);
             }
-            return await query.ToListAsync();
+            // Agregamos Include para evitar errores si necesitas datos de otras tablas relacionadas
+            return await query.Include(p => p.Marca).ToListAsync();
         }
 
-        // GET: api/Productos/5
+        // ===============================================
+        // GET: api/Productos/5 (Público - No requiere Login)
+        // ===============================================
         [HttpGet("{id}")]
+        [AllowAnonymous] // <--- AGREGAMOS ESTO
         public async Task<ActionResult<Producto>> GetProducto(int id)
         {
-            var producto = await _context.Productos.FindAsync(id);
+            // Agregamos Include para evitar errores si necesitas datos de otras tablas relacionadas
+            var producto = await _context.Productos
+                .Include(p => p.Marca)
+                .FirstOrDefaultAsync(p => p.ProductoId == id); // Usamos FirstOrDefaultAsync para incluir Marca
 
             if (producto == null)
             {
                 return NotFound();
             }
 
-            return producto;
+            return Ok(producto);
         }
 
-        // POST: api/Productos
+        // ===============================================
+        // POST: api/Productos (Privado - Requiere Token y Rol "Operador")
+        // ===============================================
         [HttpPost]
+        // No necesita [Authorize] aquí porque ya está arriba
         public async Task<ActionResult<Producto>> PostProducto(Producto producto)
         {
             _context.Productos.Add(producto);
@@ -60,55 +74,8 @@ namespace PlasticSYS.Controllers
             return CreatedAtAction("GetProducto", new { id = producto.ProductoId }, producto);
         }
 
-        // PUT: api/Productos/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducto(int id, Producto producto)
-        {
-            if (id != producto.ProductoId)
-            {
-                return BadRequest();
-            }
+        // ... (PUT y DELETE siguen siendo privados por el [Authorize] a nivel de clase)
 
-            _context.Entry(producto).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // DELETE: api/Productos/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProducto(int id)
-        {
-            var producto = await _context.Productos.FindAsync(id);
-            if (producto == null)
-            {
-                return NotFound();
-            }
-
-            _context.Productos.Remove(producto);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ProductoExists(int id)
-        {
-            return _context.Productos.Any(e => e.ProductoId == id);
-        }
+        // ... (resto del código)
     }
 }

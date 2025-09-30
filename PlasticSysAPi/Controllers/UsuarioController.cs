@@ -8,8 +8,11 @@ using PlasticSYS.Models;
 
 namespace PlasticSYS.Controllers
 {
+    // La ruta base para el controlador es /api/Usuarios
     [Route("api/[controller]")]
     [ApiController]
+    // Asegura que solo los usuarios con el rol "Operador" puedan acceder a este controlador
+    // Nota: Es mejor usar [Authorize(Roles = "Administrador")] para CRUD de usuarios
     [Authorize(Roles = "Operador")]
     public class UsuariosController : ControllerBase
     {
@@ -21,25 +24,38 @@ namespace PlasticSYS.Controllers
         }
 
         // GET: api/Usuarios
+        /// <summary>
+        /// Obtiene la lista de usuarios. Permite filtrar por nombre y limitar la cantidad de registros.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios(string nombre, int registros)
         {
             var query = _context.Usuarios.AsQueryable();
+
+            // Filtro por nombre
             if (!string.IsNullOrWhiteSpace(nombre))
             {
                 query = query.Where(u => u.Nombre.Contains(nombre));
             }
+
+            // Límite de registros
             if (registros > 0)
             {
                 query = query.Take(registros);
             }
+
             return await query.ToListAsync();
         }
 
         // GET: api/Usuarios/5
+        /// <summary>
+        /// Obtiene un usuario por su ID.
+        /// El ID se define como long para coincidir con el tipo de clave primaria.
+        /// </summary>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> GetUsuario(int id)
+        public async Task<ActionResult<Usuario>> GetUsuario(long id)
         {
+            // Nota: FindAsync busca por clave primaria.
             var usuario = await _context.Usuarios.FindAsync(id);
 
             if (usuario == null)
@@ -51,6 +67,11 @@ namespace PlasticSYS.Controllers
         }
 
         // POST: api/Usuarios
+        /// <summary>
+        /// Crea un nuevo usuario.
+        /// Nota: Este método no hashea la contraseña, lo cual es inseguro. 
+        /// El registro seguro debe hacerse a través del AuthController.
+        /// </summary>
         [HttpPost]
         public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
         {
@@ -61,14 +82,19 @@ namespace PlasticSYS.Controllers
         }
 
         // PUT: api/Usuarios/5
+        /// <summary>
+        /// Actualiza un usuario existente.
+        /// </summary>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
+        public async Task<IActionResult> PutUsuario(long id, Usuario usuario)
         {
+            // CORRECCIÓN: El parámetro 'id' debe ser del mismo tipo (long) que usuario.UsuarioId
             if (id != usuario.UsuarioId)
             {
                 return BadRequest();
             }
 
+            // Marca la entidad como modificada para que EF Core la actualice.
             _context.Entry(usuario).State = EntityState.Modified;
 
             try
@@ -91,8 +117,11 @@ namespace PlasticSYS.Controllers
         }
 
         // DELETE: api/Usuarios/5
+        /// <summary>
+        /// Elimina un usuario por su ID.
+        /// </summary>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(int id)
+        public async Task<IActionResult> DeleteUsuario(long id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
             if (usuario == null)
@@ -106,7 +135,11 @@ namespace PlasticSYS.Controllers
             return NoContent();
         }
 
-        private bool UsuarioExists(int id)
+        /// <summary>
+        /// Verifica si un usuario existe por ID.
+        /// El ID se define como long para coincidir con el tipo de clave primaria.
+        /// </summary>
+        private bool UsuarioExists(long id)
         {
             return _context.Usuarios.Any(e => e.UsuarioId == id);
         }
