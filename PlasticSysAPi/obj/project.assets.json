@@ -4248,23 +4248,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Stefanie\\.nuget\\packages\\": {},
+    "C:\\Users\\Jazmin\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Stefanie\\Videos\\ProyectoAPI\\PlasticSysAPi\\PlasticSysAPi.csproj",
+      "projectUniqueName": "C:\\Users\\Jazmin\\Downloads\\Proyecto Original\\PlasticSysAPi\\PlasticSysAPi.csproj",
       "projectName": "PlasticSysAPi",
-      "projectPath": "C:\\Users\\Stefanie\\Videos\\ProyectoAPI\\PlasticSysAPi\\PlasticSysAPi.csproj",
-      "packagesPath": "C:\\Users\\Stefanie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Stefanie\\Videos\\ProyectoAPI\\PlasticSysAPi\\obj\\",
+      "projectPath": "C:\\Users\\Jazmin\\Downloads\\Proyecto Original\\PlasticSysAPi\\PlasticSysAPi.csproj",
+      "packagesPath": "C:\\Users\\Jazmin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jazmin\\Downloads\\Proyecto Original\\PlasticSysAPi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Stefanie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jazmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4291,7 +4291,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -4355,7 +4355,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -4364,7 +4364,7 @@
       "code": "NU1900",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Error al obtener los datos de vulnerabilidad del paquete: No se puede cargar el índice de servicio del origen https://api.nuget.org/v3/index.json."
+      "message": "Error al obtener los datos de vulnerabilidad del paquete: La descarga de \"https://api.nuget.org/v3-vulnerabilities/2025.09.20.05.25.56/vulnerability.base.json\" agotó el tiempo de espera porque no se recibió ningún dato durante 60000 ms."
     }
   ]
 }
