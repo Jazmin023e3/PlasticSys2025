@@ -9,11 +9,11 @@ namespace PlasticSysAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MarcasApiController : ControllerBase
+    public class MarcasController : ControllerBase
     {
         private readonly IMarcaRepository _marcaRepository;
 
-        public MarcasApiController(IMarcaRepository marcaRepository)
+        public MarcasController(IMarcaRepository marcaRepository)
         {
             _marcaRepository = marcaRepository;
         }

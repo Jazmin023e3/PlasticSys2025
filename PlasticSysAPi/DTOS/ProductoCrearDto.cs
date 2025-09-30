@@ -14,9 +14,6 @@ namespace PlasticSysAPI.DTOS
         [Required(ErrorMessage = "El precio es obligatorio.")]
         public decimal Precio { get; set; }
 
-        [Required(ErrorMessage = "El stock es obligatorio.")]
-        public int Stock { get; set; }
-
         [Required(ErrorMessage = "La marca es obligatoria.")]
         public int MarcaId { get; set; }
     }

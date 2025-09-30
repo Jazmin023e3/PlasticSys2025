@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "muSXqEoiqJ0=",
+  "dgSpecHash": "ISq38iqRkpY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Stefanie\\OneDrive\\Desktop\\Proyecto2025\\PlasticSysAPi\\PlasticSysAPi.csproj",
+  "projectFilePath": "C:\\Users\\Stefanie\\Videos\\ProyectoAPI\\PlasticSysAPi\\PlasticSysAPi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Stefanie\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Stefanie\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
@@ -88,5 +88,15 @@
     "C:\\Users\\Stefanie\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Stefanie\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error al obtener los datos de vulnerabilidad del paquete: No se puede cargar el índice de servicio del origen https://api.nuget.org/v3/index.json.",
+      "projectPath": "C:\\Users\\Stefanie\\Videos\\ProyectoAPI\\PlasticSysAPi\\PlasticSysAPi.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Stefanie\\Videos\\ProyectoAPI\\PlasticSysAPi\\PlasticSysAPi.csproj",
+      "targetGraphs": []
+    }
+  ]
 }
